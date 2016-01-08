@@ -18,8 +18,8 @@ test.describe('Google Search', function() {
     var browser = process.env.BROWSER,
         version = process.env.VERSION,
         platform = process.env.PLATFORM,
-        server = "http://" + username + ":" + accessKey + 
-                  "@ondemand.saucelabs.com:80/wd/hub"; 
+        server = "http://" + username + ":" + accessKey +
+                  "@ondemand.saucelabs.com:80/wd/hub";
 
     driver = new webdriver.Builder().
       withCapabilities({
@@ -50,14 +50,20 @@ test.describe('Google Search', function() {
     }, done);
   })
 
-  test.it('searching for webdriver using google', function() {
-    driver.get('http://google.com');
+  test.it('should display two checkboxes', function() {
+    driver.get('https://saucelabs.com/test/guinea-pig');
 
-    var searchBox = driver.findElement(webdriver.By.name('q'));
-    searchBox.sendKeys('webdriver');
-    searchBox.getAttribute('value').then(function(value) {
-      assert.equal(value, 'webdriver');
-    });
+    driver.findElements(webdriver.By.css('[type=checkbox]'))
+      .then(function (elements) {
+        // assert that there should be two checkboxes
+        assert.equal(elements.length, 2, "there are not exactly 2 checkboxes")
+
+        elements.forEach(function (element) {
+          element.isDisplayed().then(function (isElementDisplayed) {
+            assert(isElementDisplayed, "element is not displayed when it should be");
+          });
+        })
+      });
 
   });
 });
