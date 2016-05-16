@@ -18,8 +18,8 @@ test.describe('Google Search', function() {
     var browser = process.env.BROWSER,
         version = process.env.VERSION,
         platform = process.env.PLATFORM,
-        server = "http://" + username + ":" + accessKey + 
-                  "@ondemand.saucelabs.com:80/wd/hub"; 
+        server = "http://" + username + ":" + accessKey +
+                  "@ondemand.saucelabs.com:80/wd/hub";
 
     driver = new webdriver.Builder().
       withCapabilities({
@@ -34,6 +34,7 @@ test.describe('Google Search', function() {
 
     driver.getSession().then(function (sessionid){
       driver.sessionID = sessionid.id_;
+      console.log('SauceOnDemandSessionID=' + driver.sessionID + ' job-name=SampleJobName');
     });
 
   });
