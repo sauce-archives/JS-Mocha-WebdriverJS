@@ -18,8 +18,8 @@ test.describe('Google Search', function() {
     var browser = process.env.BROWSER,
         version = process.env.VERSION,
         platform = process.env.PLATFORM,
-        server = "http://" + username + ":" + accessKey +
-                  "@ondemand.saucelabs.com:80/wd/hub";
+        server = "https://" + username + ":" + accessKey +
+                  "@ondemand.saucelabs.com:443/wd/hub";
 
     driver = new webdriver.Builder().
       withCapabilities({

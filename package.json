@@ -10,6 +10,6 @@
     "mocha": "1.20.0",
     "parallel-mocha": "~0.0.7",
     "saucelabs": "0.1.1",
-    "selenium-webdriver": "2.42.1"
+    "selenium-webdriver": "2.53.0"
   }
 }
